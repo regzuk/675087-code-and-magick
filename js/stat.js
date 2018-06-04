@@ -18,12 +18,12 @@ var BAR_CHART_Y = 70;
 var PLAYER_NAME = 'Вы';
 var PLAYER_COLOR = 'rgba(255, 0, 0, 1)';
 
-var renderCloud = function(ctx, x, y, color) {
+var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
-}
+};
 
-var getMaxElement = function(arr) {
+var getMaxElement = function (arr) {
   var max = arr[0];
 
   for (var i = 1; i < arr.length; i++) {
@@ -33,15 +33,15 @@ var getMaxElement = function(arr) {
   }
 
   return max;
-}
+};
 
-var getColumnColor = function() {
+var getColumnColor = function () {
   return 'rgba(0, 0, 255, ' + Math.random() + ')';
-}
+};
 
-window.renderStatistics = function(ctx, names, times) {
-  renderCloud (ctx, CLOUD_X + SHADOW_SHIFT, CLOUD_Y + SHADOW_SHIFT, SHADOW_COLOR);
-  renderCloud (ctx, CLOUD_X, CLOUD_Y, CLOUD_COLOR);
+window.renderStatistics = function (ctx, names, times) {
+  renderCloud(ctx, CLOUD_X + SHADOW_SHIFT, CLOUD_Y + SHADOW_SHIFT, SHADOW_COLOR);
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_COLOR);
 
   ctx.font = '16px PT Mono';
   ctx.textBaseline="top";
