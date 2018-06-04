@@ -44,7 +44,7 @@ window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_COLOR);
 
   ctx.font = '16px PT Mono';
-  ctx.textBaseline="top";
+  ctx.textBaseline= 'top';
   ctx.fillStyle = 'black';
   ctx.fillText('Ура вы победили!', TITLE_X, TITLE_Y);
   ctx.fillText('Список результатов:', TITLE_X, TITLE_Y + LINE_HEIGHT);
