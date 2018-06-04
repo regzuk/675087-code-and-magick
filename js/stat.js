@@ -4,7 +4,9 @@ var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var CLOUD_X = 100;
 var CLOUD_Y = 10;
+var CLOUD_COLOR = 'white';
 var SHADOW_SHIFT = 10;
+var SHADOW_COLOR = 'rgba(0, 0, 0, 0.7)';
 var MAX_COLUMN_HEIGHT = 150;
 var COLUMN_WIDTH = 40;
 var COLUMN_GAP = 50;
@@ -38,8 +40,8 @@ var getColumnColor = function() {
 }
 
 window.renderStatistics = function(ctx, names, times) {
-  renderCloud (ctx, CLOUD_X + SHADOW_SHIFT, CLOUD_Y + SHADOW_SHIFT, 'rgba(0, 0, 0, 0.7)');
-  renderCloud (ctx, CLOUD_X, CLOUD_Y, 'white');
+  renderCloud (ctx, CLOUD_X + SHADOW_SHIFT, CLOUD_Y + SHADOW_SHIFT, SHADOW_COLOR);
+  renderCloud (ctx, CLOUD_X, CLOUD_Y, CLOUD_COLOR);
 
   ctx.font = '16px PT Mono';
   ctx.textBaseline="top";
@@ -51,7 +53,6 @@ window.renderStatistics = function(ctx, names, times) {
   for (var i = 0; i < times.length; i++) {
     var x = BAR_CHART_X + i * (COLUMN_WIDTH + COLUMN_GAP);
     var time = Math.round(times[i]);
-    var name = names[i];
     var columnHeight = Math.round(MAX_COLUMN_HEIGHT * time / maxTime);
     var yTime = BAR_CHART_Y + (MAX_COLUMN_HEIGHT - columnHeight);
     var yColumn = yTime + LINE_HEIGHT;
@@ -59,9 +60,9 @@ window.renderStatistics = function(ctx, names, times) {
 
     ctx.fillStyle = 'black';
     ctx.fillText(time, x, yTime);
-    ctx.fillText(name, x, yName);
+    ctx.fillText(names[i], x, yName);
 
-    ctx.fillStyle = (name === PLAYER_NAME) ? PLAYER_COLOR : getColumnColor();
+    ctx.fillStyle = (names[i] === PLAYER_NAME) ? PLAYER_COLOR : getColumnColor();
     ctx.fillRect(x, yColumn, COLUMN_WIDTH, columnHeight);
   }
 };
