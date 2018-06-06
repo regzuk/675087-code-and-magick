@@ -7,7 +7,7 @@
   var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
   var getRandomArrayElement = function (arr) {
-    return arr[Math.floor(arr.length * Math.random())]
+    return arr[Math.floor(arr.length * Math.random())];
   };
   var generateWizard = function ()  {
     return {
