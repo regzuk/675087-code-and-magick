@@ -10,7 +10,7 @@
   var getRandomArrayElement = function (arr) {
     return arr[Math.floor(arr.length * Math.random())];
   };
-  var generateWizard = function ()  {
+  var generateWizard = function () {
     return {
       name: getRandomArrayElement(WIZARD_NAMES) + ' ' + getRandomArrayElement(WIZARD_SURNAMES),
       coatColor: getRandomArrayElement(COAT_COLORS),
