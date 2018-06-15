@@ -43,14 +43,14 @@
 
   var rgbToHex = function (rgbString) {
     if (rgbString.length > 0 && rgbString.charAt(0) === 'r') {
-      rgbString = rgbString.replace('rgb(','').replace(')','').split(',');
+      rgbString = rgbString.replace('rgb(', '').replace(')', '').split(',');
       var r = parseInt(rgbString[0], 10).toString(16);
       var g = parseInt(rgbString[1], 10).toString(16);
       var b = parseInt(rgbString[2], 10).toString(16);
       r = r.length === 1 ? '0' + r : r;
       g = g.length === 1 ? '0' + g : g;
       b = b.length === 1 ? '0' + b : b;
-      var colHex='#'+r+g+b;
+      var colHex='#' + r + g + b;
       return colHex;
     }
     return rgbString;
@@ -116,7 +116,7 @@
     userSetupDialog.querySelector('input[name=fireball-color]').value = newColor;
     fireball.style.backgroundColor = newColor;
   });
-  userSetupDialog.querySelector('.setup-submit').addEventListener('click', function() {
+  userSetupDialog.querySelector('.setup-submit').addEventListener('click', function () {
     userSetupDialog.querySelector('.setup-wizard-form').submit();
-  })
+  });
 })();
