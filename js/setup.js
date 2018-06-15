@@ -50,7 +50,7 @@
       r = r.length === 1 ? '0' + r : r;
       g = g.length === 1 ? '0' + g : g;
       b = b.length === 1 ? '0' + b : b;
-      var colHex='#' + r + g + b;
+      var colHex= '#' + r + g + b;
       return colHex;
     }
     return rgbString;
