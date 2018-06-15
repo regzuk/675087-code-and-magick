@@ -42,12 +42,14 @@
   };
 
   var rgbToHex = function (rgbString) {
-    if(rgbString.length > 0 && rgbString.charAt(0)=='r') {
-      rgbString=rgbString.replace('rgb(','').replace(')','').split(',');
-      var r=parseInt(rgbString[0], 10).toString(16);
-      var g=parseInt(rgbString[1], 10).toString(16);
-      var b=parseInt(rgbString[2], 10).toString(16);
-      r=r.length==1?'0'+r:r; g=g.length==1?'0'+g:g; b=b.length==1?'0'+b:b;
+    if (rgbString.length > 0 && rgbString.charAt(0) === 'r') {
+      rgbString = rgbString.replace('rgb(','').replace(')','').split(',');
+      var r = parseInt(rgbString[0], 10).toString(16);
+      var g = parseInt(rgbString[1], 10).toString(16);
+      var b = parseInt(rgbString[2], 10).toString(16);
+      r = r.length === 1 ? '0' + r : r;
+      g = g.length === 1 ? '0' + g : g;
+      b = b.length === 1 ? '0' + b : b;
       var colHex='#'+r+g+b;
       return colHex;
     }
@@ -77,42 +79,42 @@
 
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = document.querySelector('.setup-close');
-  setupOpen.addEventListener('click', function() {
+  setupOpen.addEventListener('click', function () {
     openSetupDialog();
   });
-  setupOpen.addEventListener('keydown', function(evt) {
+  setupOpen.addEventListener('keydown', function (evt) {
     if (evt.keyCode === ENTER_KEYCODE) {
       openSetupDialog();
     }
   });
-  setupClose.addEventListener('click', function() {
+  setupClose.addEventListener('click', function () {
     closeSetupDialog();
   });
-  setupClose.addEventListener('keydown', function(evt) {
+  setupClose.addEventListener('keydown', function (evt) {
     if (evt.keyCode === ENTER_KEYCODE) {
       closeSetupDialog();
     }
   });
 
   var wizardCoat = userSetupDialog.querySelector('.setup-wizard .wizard-coat');
-  wizardCoat.addEventListener('click', function() {
-    this.style.fill = COAT_COLORS[(COAT_COLORS.indexOf(this.style.fill) + 1) % COAT_COLORS.length];
-    userSetupDialog.querySelector('input[name=coat-color]').value = this.style.fill;
+  wizardCoat.addEventListener('click', function () {
+    wizardCoat.style.fill = COAT_COLORS[(COAT_COLORS.indexOf(wizardCoat.style.fill) + 1) % COAT_COLORS.length];
+    userSetupDialog.querySelector('input[name=coat-color]').value = wizardCoat.style.fill;
   });
   var wizardEyes = userSetupDialog.querySelector('.setup-wizard .wizard-eyes');
-  wizardEyes.addEventListener('click', function() {
-    this.style.fill = EYES_COLORS[(EYES_COLORS.indexOf(this.style.fill) + 1) % EYES_COLORS.length];
-    userSetupDialog.querySelector('input[name=eyes-color]').value = this.style.fill;
+  wizardEyes.addEventListener('click', function () {
+    wizardEyes.style.fill = EYES_COLORS[(EYES_COLORS.indexOf(wizardEyes.style.fill) + 1) % EYES_COLORS.length];
+    userSetupDialog.querySelector('input[name=eyes-color]').value = wizardEyes.style.fill;
   });
   var fireball = userSetupDialog.querySelector('.setup-fireball-wrap');
-  fireball.addEventListener('click', function() {
-    var color = rgbToHex(this.style.backgroundColor);
+  fireball.addEventListener('click', function () {
+    var color = rgbToHex(fireball.style.backgroundColor);
     var newColor = color;
     do {
       newColor = getRandomArrayElement(FIREBALL_COLORS);
     } while (newColor === color);
     userSetupDialog.querySelector('input[name=fireball-color]').value = newColor;
-    this.style.backgroundColor = newColor;
+    fireball.style.backgroundColor = newColor;
   });
   userSetupDialog.querySelector('.setup-submit').addEventListener('click', function() {
     userSetupDialog.querySelector('.setup-wizard-form').submit();
