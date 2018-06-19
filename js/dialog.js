@@ -23,6 +23,8 @@
   var closeSetupDialog = function () {
     userSetupDialog.classList.add('hidden');
     document.removeEventListener('keydown', setupDialogEscPressHandler);
+    userSetupDialog.style.left = '';
+    userSetupDialog.style.top = '';
   };
 
   setupOpen.addEventListener('click', function () {
