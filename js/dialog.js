@@ -42,7 +42,7 @@
     }
   });
 
-  setupUserPic.addEventListener('mousedown', function(evt) {
+  setupUserPic.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
     var coords = {
@@ -77,7 +77,7 @@
       if (dragged) {
         var clickPreventDefaultHandler = function (clickEvt) {
           clickEvt.preventDefault();
-          setupUserPic.removeEventListener('click', clickPreventDefaultHandler)
+          setupUserPic.removeEventListener('click', clickPreventDefaultHandler);
         };
         setupUserPic.addEventListener('click', clickPreventDefaultHandler);
       }
