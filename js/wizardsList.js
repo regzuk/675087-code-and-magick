@@ -7,7 +7,6 @@
   document.EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
   document.FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
   var WIZARD_COUNT = 4;
-  debugger;
 
   var getRandomArrayElement = function (arr) {
     return arr[Math.floor(arr.length * Math.random())];
