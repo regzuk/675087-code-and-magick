@@ -8,9 +8,6 @@
   var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
   var WIZARD_COUNT = 4;
 
-  var ESC_KEYCODE = 27;
-  var ENTER_KEYCODE = 13;
-
   var getRandomArrayElement = function (arr) {
     return arr[Math.floor(arr.length * Math.random())];
   };
@@ -60,41 +57,6 @@
   var similarListElement = userSetupDialog.querySelector('.setup-similar-list');
   similarListElement.appendChild(createWizardList());
   userSetupDialog.querySelector('.setup-similar').classList.remove('hidden');
-
-  var setupDialogEscPressHandler = function (evt) {
-    var setupUserName = userSetupDialog.querySelector('.setup-user-name');
-    if (evt.keyCode === ESC_KEYCODE && evt.target !== setupUserName) {
-      closeSetupDialog();
-    }
-  };
-
-  var openSetupDialog = function () {
-    userSetupDialog.classList.remove('hidden');
-    document.addEventListener('keydown', setupDialogEscPressHandler);
-  };
-  var closeSetupDialog = function () {
-    userSetupDialog.classList.add('hidden');
-    document.removeEventListener('keydown', setupDialogEscPressHandler);
-  };
-
-  var setupOpen = document.querySelector('.setup-open');
-  var setupClose = document.querySelector('.setup-close');
-  setupOpen.addEventListener('click', function () {
-    openSetupDialog();
-  });
-  setupOpen.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
-      openSetupDialog();
-    }
-  });
-  setupClose.addEventListener('click', function () {
-    closeSetupDialog();
-  });
-  setupClose.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
-      closeSetupDialog();
-    }
-  });
 
   var wizardCoat = userSetupDialog.querySelector('.setup-wizard .wizard-coat');
   wizardCoat.addEventListener('click', function () {
