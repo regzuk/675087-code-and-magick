@@ -89,4 +89,17 @@
     document.addEventListener('mousemove', mouseMoveHandler);
     document.addEventListener('mouseup', mouseUpHandler);
   });
+
+  var form = userSetupDialog.querySelector('.setup-wizard-form');
+  var submitForm = function (response) {
+    closeSetupDialog();
+  };
+  var errorForm = function (response) {
+    console.log('Error');
+  };
+  var submitFormHandler = function (evt) {
+    evt.preventDefault();
+    window.backend.save(new FormData(form), submitForm, errorForm);
+  };
+  form.addEventListener('submit', submitFormHandler);
 })();
