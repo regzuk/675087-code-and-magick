@@ -103,12 +103,12 @@
   });
 
   var form = userSetupDialog.querySelector('.setup-wizard-form');
-  var submitFormHandler = function (response) {
+  var submitForm = function () {
     closeSetupDialog();
   };
   var submitFormHandler = function (evt) {
     evt.preventDefault();
-    window.backend.save(new FormData(form), submitFormHandler, errorHandler);
+    window.backend.save(new FormData(form), submitForm, errorHandler);
   };
   form.addEventListener('submit', submitFormHandler);
 })();
