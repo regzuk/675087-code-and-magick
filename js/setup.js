@@ -18,8 +18,10 @@
 
   var userSetupDialog = document.querySelector('.setup');
   var similarListElement = userSetupDialog.querySelector('.setup-similar-list');
-  similarListElement.appendChild(document.createWizardList());
-  userSetupDialog.querySelector('.setup-similar').classList.remove('hidden');
+  window.loadWizardsHandler = function (wizards) {
+    similarListElement.appendChild(window.createWizardList(wizards));
+    userSetupDialog.querySelector('.setup-similar').classList.remove('hidden');
+  };
 
   var COAT_COLORS = document.COAT_COLORS;
   var EYES_COLORS = document.EYES_COLORS;
