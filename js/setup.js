@@ -37,10 +37,10 @@
   });
 
   window.loadWizardsHandler = function (wizards) {
-      wizardsList = wizards;
-      addWizardsList(wizards);
-      userSetupDialog.querySelector('.setup-similar').classList.remove('hidden');
-    };
+    wizardsList = wizards;
+    addWizardsList(wizards);
+    userSetupDialog.querySelector('.setup-similar').classList.remove('hidden');
+  };
 
   var COAT_COLORS = window.COAT_COLORS;
   var EYES_COLORS = window.EYES_COLORS;
