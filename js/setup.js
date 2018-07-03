@@ -16,25 +16,46 @@
     return rgbString;
   };
 
+  var wizardsList;
+
   var userSetupDialog = document.querySelector('.setup');
   var similarListElement = userSetupDialog.querySelector('.setup-similar-list');
-  window.loadWizardsHandler = function (wizards) {
-    similarListElement.appendChild(window.createWizardList(wizards));
-    userSetupDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+  var removeWizardsList = function () {
+    while (similarListElement.firstChild) {
+      similarListElement.removeChild(similarListElement.firstChild);
+    }
   };
 
-  var COAT_COLORS = document.COAT_COLORS;
-  var EYES_COLORS = document.EYES_COLORS;
-  var FIREBALL_COLORS = document.FIREBALL_COLORS;
+  var addWizardsList = function (wizards) {
+    similarListElement.appendChild(window.createWizardList(wizards, userSetupDialog.querySelector('input[name=coat-color]').value, userSetupDialog.querySelector('input[name=eyes-color]').value));
+  };
+
+  var updateWizardsList = window.debounce(function (wizards) {
+    removeWizardsList();
+    addWizardsList(wizards);
+  });
+
+  window.loadWizardsHandler = function (wizards) {
+      wizardsList = wizards;
+      addWizardsList(wizards);
+      userSetupDialog.querySelector('.setup-similar').classList.remove('hidden');
+    };
+
+  var COAT_COLORS = window.COAT_COLORS;
+  var EYES_COLORS = window.EYES_COLORS;
+  var FIREBALL_COLORS = window.FIREBALL_COLORS;
   var wizardCoat = userSetupDialog.querySelector('.setup-wizard .wizard-coat');
   wizardCoat.addEventListener('click', function () {
     wizardCoat.style.fill = COAT_COLORS[(COAT_COLORS.indexOf(wizardCoat.style.fill) + 1) % COAT_COLORS.length];
     userSetupDialog.querySelector('input[name=coat-color]').value = wizardCoat.style.fill;
+    updateWizardsList(wizardsList);
   });
   var wizardEyes = userSetupDialog.querySelector('.setup-wizard .wizard-eyes');
   wizardEyes.addEventListener('click', function () {
     wizardEyes.style.fill = EYES_COLORS[(EYES_COLORS.indexOf(wizardEyes.style.fill) + 1) % EYES_COLORS.length];
     userSetupDialog.querySelector('input[name=eyes-color]').value = wizardEyes.style.fill;
+    updateWizardsList(wizardsList);
   });
   var fireball = userSetupDialog.querySelector('.setup-fireball-wrap');
   fireball.addEventListener('click', function () {

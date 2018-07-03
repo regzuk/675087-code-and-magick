@@ -18,13 +18,26 @@
 
     return wizardElement;
   };
-  var createWizardList = function (wizards) {
+  var createWizardList = function (wizards, coat, eyes) {
     var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content.querySelector('.setup-similar-item');
 
+    var sortingWizards = wizards.map(function (x) {
+      x.rank = 0;
+      if (x.colorCoat === coat) {
+        x.rank += 2;
+      }
+      if (x.colorEyes === eyes) {
+        x.rank += 1;
+      }
+      return x;
+    }).sort(function (a, b) {
+      return b.rank - a.rank;
+    });
+
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < WIZARDS_COUNT; i++) {
-      fragment.appendChild(createSimilarWizard(wizards[i], similarWizardTemplate));
+      fragment.appendChild(createSimilarWizard(sortingWizards[i], similarWizardTemplate));
     }
     return fragment;
   };
